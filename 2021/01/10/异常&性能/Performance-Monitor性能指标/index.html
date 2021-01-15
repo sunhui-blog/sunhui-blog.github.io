@@ -2,23 +2,23 @@
 <html lang="en">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>传输协议 - shjavascript&#39;s blog</title>
+<title>Performance Monitor性能指标 - shjavascript&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content=".pt{padding-top:10px;}   简述网络协议相关。">
-<meta name="keywords" content="网络知识">
+    <meta name="description" content="查看性能指标，页面性能调优。">
+<meta name="keywords" content="异常&amp;性能">
 <meta property="og:type" content="article">
-<meta property="og:title" content="传输协议">
-<meta property="og:url" content="http://yoursite.com/2020/12/22/计算机网络/计算机网络/index.html">
+<meta property="og:title" content="Performance Monitor性能指标">
+<meta property="og:url" content="http://yoursite.com/2021/01/10/异常&性能/Performance-Monitor性能指标/index.html">
 <meta property="og:site_name" content="shjavascript&#39;s blog">
-<meta property="og:description" content=".pt{padding-top:10px;}   简述网络协议相关。">
+<meta property="og:description" content="查看性能指标，页面性能调优。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-01-01T07:51:24.503Z">
+<meta property="og:updated_time" content="2021-01-15T21:22:18.807Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="传输协议">
-<meta name="twitter:description" content=".pt{padding-top:10px;}   简述网络协议相关。">
+<meta name="twitter:title" content="Performance Monitor性能指标">
+<meta name="twitter:description" content="查看性能指标，页面性能调优。">
 
 
 
@@ -90,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <!-- <img src="/" alt="传输协议" height="28"> -->
+                <!-- <img src="/" alt="Performance Monitor性能指标" height="28"> -->
             
             </a>
         </div>
@@ -127,17 +127,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-12-21T16:01:13.000Z">2020-12-22</time>
+                <time class="level-item has-text-grey" datetime="2021-01-10T14:28:17.000Z">2021-01-10</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/计算机网络/">计算机网络</a>
+                <a class="has-link-grey -link" href="/categories/异常-性能/">异常&性能</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 478 words)
+                    a few seconds read (About 57 words)
                 </span>
                 
                 
@@ -146,58 +146,30 @@
         
         <h1 class="title is-size-4 is-size-5-mobile has-text-weight-normal">
             
-                传输协议
+                Performance Monitor性能指标
             
         </h1>
         <div class="content">
-            <style type="text/css">
-.pt{padding-top:10px;}
-</style>
-
-<p></p><p>简述网络协议相关。</p>
-<a id="more"></a><p></p>
+            <p>查看性能指标，页面性能调优。</p>
+<a id="more"></a>
 <ol>
-  <li class="pt">
-    <p>HTTPS传输比HTTP传输的优势？</p>
-    <ul>
-      <li>HTTP协议以明文方式发送内容，不提供任何方式的数据加密。</li>
-      <li>HTTPS是在HTTP基础上加入了SSL协议(SSL协议是在OSI网络传输模型中的会话层中传输的安全协议)，SSL依靠证书来验证服务器的身份，并为浏览器和服务器之间的通信加密。</li>
-      <li>使用不同的链接方式，端口也不同，一般而言，HTTP 协议的端口为 80，HTTPS 的端口为 443。</li>
-    </ul>
-  </li>
-  <li class="pt">
-    <p>FTP的应用场景？</p>
-    <ul>
-      <li>迅雷BT种子、文件上传下载、身份验证、多点下载，断点续传等（部分场景被P2P和网盘替代）</li>
-    </ul>
-  </li>
-  <li class="pt">
-    <p>SMTP/POP3/IMAP的应用场景？</p>
-    <ul>
-      <li>电子邮件发送协议主要是SMTP，收件协议主要是POP3和IMAP</li>
-    </ul>
-  </li>
-  <li class="pt">
-    <p>Telnet和SSH的应用场景？</p>
-    <ul>
-      <li>Telnet和SSH用于远程访问服务器的的两大常用协议。利用它们，我们可以管理并监控生产服务器和企业服务器，更新服务器内核，安装最新的软件包和补丁，能够远程登录服务器，开展软件开发、测试运行、更改代码和重新部署。</li>
-    </ul>
-  </li>
-  <li class="pt">
-    <p>ws或wss(wss表示在TLS之上的Websocket)数据双向传输？</p>
-    <ul>
-      <li>允许服务端主动向客户端推送数据，数据大盘(数据间隔从服务端推送)</li>
-      <li>在WebSocket API中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。数据双向传输的概念不仅仅是数据双向绑定这种理念，和协议通信相类似。</li>
-    </ul>
-</li></ol>
+  <li>CPU usage, CPU占用率</li>
+  <li>JS head size, JS内存使用大小</li>
+  <li>DOM Nodes, 内存中挂载的DOM节点个数</li>
+  <li>JS event listeners, 事件监听数</li>
+</ol>
 
+<p></p><h4 style="margin-top: 40px;">&lt;附&gt;</h4><p></p>
+<ol>
+  <li><a href="https://juejin.cn/post/6844904045774110733" target="_blank" rel="noopener">https://juejin.cn/post/6844904045774110733</a></li>
+</ol>
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/网络知识/">网络知识</a>
+                    <a class="has-link-grey -link" href="/tags/异常-性能/">异常&性能</a>
                 </div>
             </div>
         </div>
@@ -219,16 +191,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/12/22/计算机网络/网络传输模型/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2021/01/11/JavaScript/JavaScript的set和get/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">网络传输模型</span>
+                <span class="level-item">JavaScript的set和get</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/12/21/JavaScript/深拷贝&浅拷贝/">
-                <span class="level-item">深拷贝&amp;浅拷贝</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2021/01/10/异常&性能/前端异常处理/">
+                <span class="level-item">前端异常处理</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -280,7 +252,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        53
+                        47
                     </p>
                 </div>
             </div>
@@ -290,7 +262,7 @@
                         Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        19
+                        18
                     </p>
                 </div>
             </div>
@@ -300,7 +272,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        14
+                        13
                     </p>
                 </div>
             </div>
@@ -417,7 +389,7 @@
                 <span class="level-item">5.数据结构&算法</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/架构/">
@@ -433,7 +405,7 @@
                 <span class="level-item">7.框架</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/浏览器/">
@@ -500,14 +472,6 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/阅读源码/">
-            <span class="level-start">
-                <span class="level-item">16.阅读源码</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/FQA/">
             <span class="level-start">
                 <span class="level-item">FQA</span>
@@ -521,7 +485,7 @@
                 <span class="level-item">工具</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/总结/">
@@ -543,7 +507,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/前后端分离/" style="font-size: 10px;">前后端分离</a> <a href="/tags/工具/" style="font-size: 17.5px;">工具</a> <a href="/tags/异常-性能/" style="font-size: 15px;">异常&性能</a> <a href="/tags/架构/" style="font-size: 17.5px;">架构</a> <a href="/tags/框架/" style="font-size: 20px;">框架</a> <a href="/tags/浏览器/" style="font-size: 15px;">浏览器</a> <a href="/tags/源码/" style="font-size: 10px;">源码</a> <a href="/tags/程序设计/" style="font-size: 10px;">程序设计</a> <a href="/tags/算法/" style="font-size: 12.5px;">算法</a> <a href="/tags/编程语言/" style="font-size: 20px;">编程语言</a> <a href="/tags/编译原理/" style="font-size: 10px;">编译原理</a> <a href="/tags/网络知识/" style="font-size: 15px;">网络知识</a> <a href="/tags/脚手架/" style="font-size: 10px;">脚手架</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a>
+        <a href="/tags/前后端分离/" style="font-size: 10px;">前后端分离</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/异常-性能/" style="font-size: 15px;">异常&性能</a> <a href="/tags/架构/" style="font-size: 17.5px;">架构</a> <a href="/tags/框架/" style="font-size: 17.5px;">框架</a> <a href="/tags/浏览器/" style="font-size: 15px;">浏览器</a> <a href="/tags/程序设计/" style="font-size: 10px;">程序设计</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/编程语言/" style="font-size: 20px;">编程语言</a> <a href="/tags/编译原理/" style="font-size: 10px;">编译原理</a> <a href="/tags/网络知识/" style="font-size: 15px;">网络知识</a> <a href="/tags/脚手架/" style="font-size: 10px;">脚手架</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a>
     </div>
 </div>
 
@@ -560,25 +524,6 @@
         
         <article class="media">
             
-            <a href="/2021/01/16/阅读源码/koa源码/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="koa源码">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-16T13:18:19.000Z">2021-01-16</time></div>
-                    <a href="/2021/01/16/阅读源码/koa源码/" class="has-link-black-ter is-size-6">koa源码</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/阅读源码/">阅读源码</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2021/01/15/JavaScript/手写一个reduce/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="手写一个reduce">
@@ -591,25 +536,6 @@
                     <a href="/2021/01/15/JavaScript/手写一个reduce/" class="has-link-black-ter is-size-6">手写一个reduce</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2021/01/15/数据结构&算法/LRU缓存机制/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="LRU缓存机制">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-15T00:41:02.000Z">2021-01-15</time></div>
-                    <a href="/2021/01/15/数据结构&算法/LRU缓存机制/" class="has-link-black-ter is-size-6">LRU缓存机制</a>
-                    <p class="is-size-7 is-uppercase">
-                        
                     </p>
                 </div>
             </div>
@@ -636,18 +562,56 @@
         
         <article class="media">
             
-            <a href="/2021/01/14/工具/webpack打包过程/" class="media-left">
+            <a href="/2021/01/14/框架/菜单路由连续点击无响应/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="webpack打包过程">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="「vue-router源码」页面问题：菜单路由连续点击无响应">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T15:42:49.000Z">2021-01-14</time></div>
-                    <a href="/2021/01/14/工具/webpack打包过程/" class="has-link-black-ter is-size-6">webpack打包过程</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T03:10:56.000Z">2021-01-14</time></div>
+                    <a href="/2021/01/14/框架/菜单路由连续点击无响应/" class="has-link-black-ter is-size-6">「vue-router源码」页面问题：菜单路由连续点击无响应</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/工具/">工具</a>
+                        <a class="has-link-grey -link" href="/categories/框架/">框架</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2021/01/13/框架/从零搭建vue项目/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="从零搭建vue项目">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-13T09:24:01.000Z">2021-01-13</time></div>
+                    <a href="/2021/01/13/框架/从零搭建vue项目/" class="has-link-black-ter is-size-6">从零搭建vue项目</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/框架/">框架</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2021/01/12/编译原理/JavaScript柯里化/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="JavaScript柯里化">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-12T12:04:18.000Z">2021-01-12</time></div>
+                    <a href="/2021/01/12/编译原理/JavaScript柯里化/" class="has-link-black-ter is-size-6">JavaScript柯里化</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/编译原理/">编译原理</a>
                     </p>
                 </div>
             </div>
@@ -671,7 +635,7 @@
                     <span class="level-item">January 2021</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>
@@ -682,7 +646,7 @@
                     <span class="level-item">December 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -737,7 +701,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -864,7 +828,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/工具/">
                         <span class="tag">工具</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -885,7 +849,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/框架/">
                         <span class="tag">框架</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -893,13 +857,6 @@
                     <a class="tags has-addons" href="/tags/浏览器/">
                         <span class="tag">浏览器</span>
                         <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/源码/">
-                        <span class="tag">源码</span>
-                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -913,7 +870,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/算法/">
                         <span class="tag">算法</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -977,25 +934,6 @@
         
         <article class="media">
             
-            <a href="/2021/01/16/阅读源码/koa源码/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="koa源码">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-16T13:18:19.000Z">2021-01-16</time></div>
-                    <a href="/2021/01/16/阅读源码/koa源码/" class="has-link-black-ter is-size-6">koa源码</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/阅读源码/">阅读源码</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2021/01/15/JavaScript/手写一个reduce/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="手写一个reduce">
@@ -1008,25 +946,6 @@
                     <a href="/2021/01/15/JavaScript/手写一个reduce/" class="has-link-black-ter is-size-6">手写一个reduce</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2021/01/15/数据结构&算法/LRU缓存机制/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="LRU缓存机制">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-15T00:41:02.000Z">2021-01-15</time></div>
-                    <a href="/2021/01/15/数据结构&算法/LRU缓存机制/" class="has-link-black-ter is-size-6">LRU缓存机制</a>
-                    <p class="is-size-7 is-uppercase">
-                        
                     </p>
                 </div>
             </div>
@@ -1053,18 +972,56 @@
         
         <article class="media">
             
-            <a href="/2021/01/14/工具/webpack打包过程/" class="media-left">
+            <a href="/2021/01/14/框架/菜单路由连续点击无响应/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="webpack打包过程">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="「vue-router源码」页面问题：菜单路由连续点击无响应">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T15:42:49.000Z">2021-01-14</time></div>
-                    <a href="/2021/01/14/工具/webpack打包过程/" class="has-link-black-ter is-size-6">webpack打包过程</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T03:10:56.000Z">2021-01-14</time></div>
+                    <a href="/2021/01/14/框架/菜单路由连续点击无响应/" class="has-link-black-ter is-size-6">「vue-router源码」页面问题：菜单路由连续点击无响应</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/工具/">工具</a>
+                        <a class="has-link-grey -link" href="/categories/框架/">框架</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2021/01/13/框架/从零搭建vue项目/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="从零搭建vue项目">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-13T09:24:01.000Z">2021-01-13</time></div>
+                    <a href="/2021/01/13/框架/从零搭建vue项目/" class="has-link-black-ter is-size-6">从零搭建vue项目</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/框架/">框架</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2021/01/12/编译原理/JavaScript柯里化/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="JavaScript柯里化">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-12T12:04:18.000Z">2021-01-12</time></div>
+                    <a href="/2021/01/12/编译原理/JavaScript柯里化/" class="has-link-black-ter is-size-6">JavaScript柯里化</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/编译原理/">编译原理</a>
                     </p>
                 </div>
             </div>
@@ -1088,7 +1045,7 @@
                     <span class="level-item">January 2021</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">13</span>
                 </span>
             </a>
         </li>
@@ -1099,7 +1056,7 @@
                     <span class="level-item">December 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1154,7 +1111,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1281,7 +1238,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/工具/">
                         <span class="tag">工具</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1302,7 +1259,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/框架/">
                         <span class="tag">框架</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1310,13 +1267,6 @@
                     <a class="tags has-addons" href="/tags/浏览器/">
                         <span class="tag">浏览器</span>
                         <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/源码/">
-                        <span class="tag">源码</span>
-                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1330,7 +1280,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/算法/">
                         <span class="tag">算法</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1386,7 +1336,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <!-- <img src="/" alt="传输协议" height="28"> -->
+                    <!-- <img src="/" alt="Performance Monitor性能指标" height="28"> -->
                 
                 </a>
                 <p class="is-size-7">
