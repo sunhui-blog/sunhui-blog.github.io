@@ -2,27 +2,23 @@
 <html lang="en">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>「vue-router源码」页面问题：菜单路由连续点击无响应 - shjavascript&#39;s blog</title>
+<title>手写一个简易版promise - shjavascript&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content=".pt{padding-top: 10px;} .mt5{margin-top: 5px;} .mt10{margin-top: 10px;} .red{color: red;} .blue{color: blue;} .fb{font-weight: bolder}   页面问题：菜单路由连续点击无响应，该问题在网上有很多其他的处理方式，比如vuerouter改写prototype的push方">
-<meta name="keywords" content="框架">
+    <meta name="description" content="promise的简易实现">
+<meta name="keywords" content="编程语言">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「vue-router源码」页面问题：菜单路由连续点击无响应">
-<meta property="og:url" content="http://yoursite.com/2021/01/14/框架/菜单路由连续点击无响应/index.html">
+<meta property="og:title" content="手写一个简易版promise">
+<meta property="og:url" content="http://yoursite.com/2021/01/13/JavaScript/手写一个简易版promise/index.html">
 <meta property="og:site_name" content="shjavascript&#39;s blog">
-<meta property="og:description" content=".pt{padding-top: 10px;} .mt5{margin-top: 5px;} .mt10{margin-top: 10px;} .red{color: red;} .blue{color: blue;} .fb{font-weight: bolder}   页面问题：菜单路由连续点击无响应，该问题在网上有很多其他的处理方式，比如vuerouter改写prototype的push方">
+<meta property="og:description" content="promise的简易实现">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/img/vuerouter/error.png">
-<meta property="og:image" content="http://yoursite.com/img/vuerouter/samerouter.png">
-<meta property="og:image" content="http://yoursite.com/img/vuerouter/matched.png">
-<meta property="og:updated_time" content="2021-01-15T21:19:41.172Z">
+<meta property="og:updated_time" content="2021-01-15T21:55:28.626Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="「vue-router源码」页面问题：菜单路由连续点击无响应">
-<meta name="twitter:description" content=".pt{padding-top: 10px;} .mt5{margin-top: 5px;} .mt10{margin-top: 10px;} .red{color: red;} .blue{color: blue;} .fb{font-weight: bolder}   页面问题：菜单路由连续点击无响应，该问题在网上有很多其他的处理方式，比如vuerouter改写prototype的push方">
-<meta name="twitter:image" content="http://yoursite.com/img/vuerouter/error.png">
+<meta name="twitter:title" content="手写一个简易版promise">
+<meta name="twitter:description" content="promise的简易实现">
 
 
 
@@ -94,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <!-- <img src="/" alt="「vue-router源码」页面问题：菜单路由连续点击无响应" height="28"> -->
+                <!-- <img src="/" alt="手写一个简易版promise" height="28"> -->
             
             </a>
         </div>
@@ -131,17 +127,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2021-01-14T03:10:56.000Z">2021-01-14</time>
+                <time class="level-item has-text-grey" datetime="2021-01-13T15:58:42.000Z">2021-01-13</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/框架/">框架</a>
+                <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 338 words)
+                    2 minutes read (About 262 words)
                 </span>
                 
                 
@@ -150,54 +146,26 @@
         
         <h1 class="title is-size-4 is-size-5-mobile has-text-weight-normal">
             
-                「vue-router源码」页面问题：菜单路由连续点击无响应
+                手写一个简易版promise
             
         </h1>
         <div class="content">
-            <style type="text/css">
-.pt{padding-top: 10px;}
-.mt5{margin-top: 5px;}
-.mt10{margin-top: 10px;}
-.red{color: red;}
-.blue{color: blue;}
-.fb{font-weight: bolder}
-</style>
-
-<p>页面问题：菜单路由连续点击无响应，该问题在网上有很多其他的处理方式，比如vuerouter改写prototype的push方法做catch等等，但经过对该部分源码的解读及vue-router各版本的update更新点的对比发现，vue-router的版本控制做得不够好，故提出以下解决方案。</p>
-<a id="more"></a>
-
-<img src="/img/vuerouter/error.png" alt="控制台报错信息">
-
-<p class="mt10" style="margin-top: 30px;">
-  <span class="fb">问题出现在：</span>
-  <span class="red">vue-router v3.0.7版本后</span>
-</p>
-
-<div class="mt5">
-  <span class="fb">问题解决方式：</span>
-  <span class="blue">package.json 关闭v3版本自动升级，并将版本固定到3.0.7（注：vue-router的版本设计不合理 – promise的引入，应在v4大版本升级时发布，orz现在还在v3系列，v4系列的话，package自动升级就不会受到影响。</span>
-</div>
-
-<p class="fb mt10" style="margin-top: 30px;">
-  解决vue-router报NavigationDuplicated: Avoided redundant navigation to current location 的问题。
-</p>
-
-<p></p><p>触发该报错信息条件：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// in the case the route map has been dynamically appended to</span><br></pre></td></tr></table></figure><p></p>
-<p><img src="/img/vuerouter/samerouter.png" alt="触发条件-vuerouter源码"></p>
+            <p>promise的简易实现
+<a id="more"></a></p>
+<p></p><h5>解决的问题有：</h5><p></p>
 <ol>
-  <li>isSameRoute()：match匹配</li>
-  <li>上次路由索引 与 当前路由索引 全匹配</li>
-  <li>在2条件满足后，触发vue-router的matched机制</li>
+  <li>嵌套调用，第一个函数的输出往往是第二个函数的输入；</li>
+  <li>处理多个异步请求并发，开发时往往需要同步请求最终的结果。</li>
 </ol>
 
+<p></p><h5>运用到的设计模式：</h5><p></p>
+<p>发布订阅模式：收集依赖 -&gt; 触发通知 -&gt; 取出依赖执行</p>
 
-<p></p><h4 style="margin-top:50px;">&lt;附&gt;</h4>
-matched机制说明：<p></p>
-<ol>
-  <li>matched的map源码实现：
-  <img src="/img/vuerouter/matched.png" alt="matched-vuerouter源码"></li>
-</ol>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">const PENDING = &apos;PENDING&apos;</span><br><span class="line">const FULFILLED = &apos;FULFILLED&apos;</span><br><span class="line">const REJECTED = &apos;REJECTED&apos;</span><br><span class="line"></span><br><span class="line">class Promise &#123;</span><br><span class="line">  constructor (executor) &#123;</span><br><span class="line">    this.status = PENDING</span><br><span class="line">    this.value = null</span><br><span class="line">    this.reason = null</span><br><span class="line">    // 存放依赖</span><br><span class="line">    this.onRejectedCallbacks = []</span><br><span class="line">    this.onResolvedCallbacks = []</span><br><span class="line"></span><br><span class="line">    // 触发通知</span><br><span class="line">    const resolve = (value) =&gt; &#123;</span><br><span class="line">      if (this.status === PENDING) &#123;</span><br><span class="line">        this.status = FULFILLED</span><br><span class="line">        this.value = value</span><br><span class="line"></span><br><span class="line">        // 执行依赖</span><br><span class="line">        this.onResolvedCallbacks.forEach((fn) =&gt; fn())</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 触发通知</span><br><span class="line">    const reject = (value) =&gt; &#123;</span><br><span class="line">      if (this.status === PENDING) &#123;</span><br><span class="line">        this.status = REJECTED</span><br><span class="line">        this.reason = value</span><br><span class="line"></span><br><span class="line">        // 执行依赖</span><br><span class="line">        this.onRejectedCallbacks.forEach((fn) =&gt; fn())</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    try &#123;</span><br><span class="line">      executor(resolve, reject)</span><br><span class="line">    &#125; catch (error) &#123;</span><br><span class="line">      reject(error)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  then (onFulfilled, onRejected) &#123;</span><br><span class="line">    if (this.status === FULFILLED) &#123;</span><br><span class="line">      onFulfilled(this.value)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (this.status === REJECTED) &#123;</span><br><span class="line">      onRejected(this.reason)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 收集依赖</span><br><span class="line">    if (this.status === PENDING) &#123;</span><br><span class="line">      this.onResolvedCallbacks.push(() =&gt; &#123;</span><br><span class="line">        onFulfilled(this.value)</span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">      this.onRejectedCallbacks.push(() =&gt; &#123;</span><br><span class="line">        onRejected(this.reason)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p></p><h5>测试一下：</h5>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">  resolve(&apos;success&apos;)</span><br><span class="line">&#125;).then((data) =&gt; &#123;</span><br><span class="line">  console.log(data) // &apos;success&apos;</span><br><span class="line">&#125;, (err) =&gt; &#123;</span><br><span class="line">  console.log(err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">  setTimeout(() =&gt; &#123;</span><br><span class="line">    resolve(&apos;success&apos;)</span><br><span class="line">  &#125;, 100)</span><br><span class="line">&#125;).then((data) =&gt; &#123;</span><br><span class="line">  console.log(data) // &apos;success&apos;</span><br><span class="line">&#125;, (error) =&gt; &#123;</span><br><span class="line">  console.log(error)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -205,7 +173,7 @@ matched机制说明：<p></p>
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/框架/">框架</a>
+                    <a class="has-link-grey -link" href="/tags/编程语言/">编程语言</a>
                 </div>
             </div>
         </div>
@@ -227,16 +195,16 @@ matched机制说明：<p></p>
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2021/01/14/JavaScript/手写一个简易版promise/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2021/01/15/框架/菜单路由连续点击无响应/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">手写一个简易版promise</span>
+                <span class="level-item">「vue-router源码」页面问题：菜单路由连续点击无响应</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2021/01/13/框架/从零搭建vue项目/">
-                <span class="level-item">从零搭建vue项目</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2021/01/13/JavaScript/手写一个reduce/">
+                <span class="level-item">手写一个reduce</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -560,45 +528,7 @@ matched机制说明：<p></p>
         
         <article class="media">
             
-            <a href="/2021/01/15/JavaScript/手写一个reduce/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="手写一个reduce">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-15T11:05:14.000Z">2021-01-15</time></div>
-                    <a href="/2021/01/15/JavaScript/手写一个reduce/" class="has-link-black-ter is-size-6">手写一个reduce</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2021/01/14/JavaScript/手写一个简易版promise/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="手写一个简易版promise">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T15:58:42.000Z">2021-01-14</time></div>
-                    <a href="/2021/01/14/JavaScript/手写一个简易版promise/" class="has-link-black-ter is-size-6">手写一个简易版promise</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2021/01/14/框架/菜单路由连续点击无响应/" class="media-left">
+            <a href="/2021/01/15/框架/菜单路由连续点击无响应/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="「vue-router源码」页面问题：菜单路由连续点击无响应">
                 </p>
@@ -606,10 +536,48 @@ matched机制说明：<p></p>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T03:10:56.000Z">2021-01-14</time></div>
-                    <a href="/2021/01/14/框架/菜单路由连续点击无响应/" class="has-link-black-ter is-size-6">「vue-router源码」页面问题：菜单路由连续点击无响应</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-15T03:10:56.000Z">2021-01-15</time></div>
+                    <a href="/2021/01/15/框架/菜单路由连续点击无响应/" class="has-link-black-ter is-size-6">「vue-router源码」页面问题：菜单路由连续点击无响应</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/框架/">框架</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2021/01/13/JavaScript/手写一个简易版promise/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="手写一个简易版promise">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-13T15:58:42.000Z">2021-01-13</time></div>
+                    <a href="/2021/01/13/JavaScript/手写一个简易版promise/" class="has-link-black-ter is-size-6">手写一个简易版promise</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2021/01/13/JavaScript/手写一个reduce/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="手写一个reduce">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-13T11:05:14.000Z">2021-01-13</time></div>
+                    <a href="/2021/01/13/JavaScript/手写一个reduce/" class="has-link-black-ter is-size-6">手写一个reduce</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
@@ -970,45 +938,7 @@ matched机制说明：<p></p>
         
         <article class="media">
             
-            <a href="/2021/01/15/JavaScript/手写一个reduce/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="手写一个reduce">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-15T11:05:14.000Z">2021-01-15</time></div>
-                    <a href="/2021/01/15/JavaScript/手写一个reduce/" class="has-link-black-ter is-size-6">手写一个reduce</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2021/01/14/JavaScript/手写一个简易版promise/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="手写一个简易版promise">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T15:58:42.000Z">2021-01-14</time></div>
-                    <a href="/2021/01/14/JavaScript/手写一个简易版promise/" class="has-link-black-ter is-size-6">手写一个简易版promise</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2021/01/14/框架/菜单路由连续点击无响应/" class="media-left">
+            <a href="/2021/01/15/框架/菜单路由连续点击无响应/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="「vue-router源码」页面问题：菜单路由连续点击无响应">
                 </p>
@@ -1016,10 +946,48 @@ matched机制说明：<p></p>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T03:10:56.000Z">2021-01-14</time></div>
-                    <a href="/2021/01/14/框架/菜单路由连续点击无响应/" class="has-link-black-ter is-size-6">「vue-router源码」页面问题：菜单路由连续点击无响应</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-15T03:10:56.000Z">2021-01-15</time></div>
+                    <a href="/2021/01/15/框架/菜单路由连续点击无响应/" class="has-link-black-ter is-size-6">「vue-router源码」页面问题：菜单路由连续点击无响应</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/框架/">框架</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2021/01/13/JavaScript/手写一个简易版promise/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="手写一个简易版promise">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-13T15:58:42.000Z">2021-01-13</time></div>
+                    <a href="/2021/01/13/JavaScript/手写一个简易版promise/" class="has-link-black-ter is-size-6">手写一个简易版promise</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2021/01/13/JavaScript/手写一个reduce/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="手写一个reduce">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-13T11:05:14.000Z">2021-01-13</time></div>
+                    <a href="/2021/01/13/JavaScript/手写一个reduce/" class="has-link-black-ter is-size-6">手写一个reduce</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
                     </p>
                 </div>
             </div>
@@ -1372,7 +1340,7 @@ matched机制说明：<p></p>
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <!-- <img src="/" alt="「vue-router源码」页面问题：菜单路由连续点击无响应" height="28"> -->
+                    <!-- <img src="/" alt="手写一个简易版promise" height="28"> -->
                 
                 </a>
                 <p class="is-size-7">
