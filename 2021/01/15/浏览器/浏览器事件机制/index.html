@@ -2,23 +2,30 @@
 <html lang="en">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>浏览器事件机制 - shjavascript&#39;s blog</title>
+<title>「chromium源码解读」浏览器事件机制 - shjavascript&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="源码解析：https://zhuanlan.zhihu.com/p/25095179  #待补充#">
+    <meta name="description" content=".red{color:red;}   从chrome源码侧webkit内核解读浏览器事件机制。原创解析转载请注明出处。">
 <meta name="keywords" content="浏览器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浏览器事件机制">
-<meta property="og:url" content="http://yoursite.com/2019/10/28/浏览器/浏览器事件机制/index.html">
+<meta property="og:title" content="「chromium源码解读」浏览器事件机制">
+<meta property="og:url" content="http://yoursite.com/2021/01/15/浏览器/浏览器事件机制/index.html">
 <meta property="og:site_name" content="shjavascript&#39;s blog">
-<meta property="og:description" content="源码解析：https://zhuanlan.zhihu.com/p/25095179  #待补充#">
+<meta property="og:description" content=".red{color:red;}   从chrome源码侧webkit内核解读浏览器事件机制。原创解析转载请注明出处。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-01-01T05:32:02.131Z">
+<meta property="og:image" content="http://yoursite.com/img/chrome/eventmodel.jpg">
+<meta property="og:image" content="http://yoursite.com/img/chrome/soucecode.jpg">
+<meta property="og:image" content="http://yoursite.com/img/chrome/procedure.jpg">
+<meta property="og:image" content="http://yoursite.com/img/chrome/eventflow.jpg">
+<meta property="og:image" content="http://yoursite.com/img/chrome/addEventListener.jpg">
+<meta property="og:image" content="http://yoursite.com/img/chrome/observer.jpg">
+<meta property="og:updated_time" content="2021-01-15T22:44:04.930Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浏览器事件机制">
-<meta name="twitter:description" content="源码解析：https://zhuanlan.zhihu.com/p/25095179  #待补充#">
+<meta name="twitter:title" content="「chromium源码解读」浏览器事件机制">
+<meta name="twitter:description" content=".red{color:red;}   从chrome源码侧webkit内核解读浏览器事件机制。原创解析转载请注明出处。">
+<meta name="twitter:image" content="http://yoursite.com/img/chrome/eventmodel.jpg">
 
 
 
@@ -90,7 +97,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <!-- <img src="/" alt="浏览器事件机制" height="28"> -->
+                <!-- <img src="/" alt="「chromium源码解读」浏览器事件机制" height="28"> -->
             
             </a>
         </div>
@@ -127,7 +134,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-27T18:33:56.000Z">2019-10-28</time>
+                <time class="level-item has-text-grey" datetime="2021-01-14T18:33:56.000Z">2021-01-15</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/浏览器/">浏览器</a>
@@ -137,7 +144,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 13 words)
+                    a minute read (About 150 words)
                 </span>
                 
                 
@@ -146,13 +153,50 @@
         
         <h1 class="title is-size-4 is-size-5-mobile has-text-weight-normal">
             
-                浏览器事件机制
+                「chromium源码解读」浏览器事件机制
             
         </h1>
         <div class="content">
-            <p>源码解析：<a href="https://zhuanlan.zhihu.com/p/25095179" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25095179</a></p>
+            <style type="text/css">
+.red{color:red;}
+</style>
 
-<p>#待补充#</p>
+<p>从chrome源码侧webkit内核解读浏览器事件机制。<span class="red">原创解析转载请注明出处。</span></p>
+
+<a id="more"></a>
+<ol>
+  <li>
+    <p>事件模型(Event Moudle)</p>
+    <img src="/img/chrome/eventmodel.jpg" alt="事件模型">
+  </li>
+  <li>
+    <p>事件订阅-发布相关源码（c++）</p>
+    <img src="/img/chrome/soucecode.jpg" alt="订阅-发布源码">
+  </li>
+  <li>
+    <p>事件处理过程</p>
+    <img src="/img/chrome/procedure.jpg" alt="事件处理过程">
+  </li>
+  <li>
+    <p>DOM事件流</p>
+    <img src="/img/chrome/eventflow.jpg" alt="DOM事件流">
+  </li>
+  <li>
+    <p>设置事件处理程序在事件流中的位置</p>
+    <img src="/img/chrome/addEventListener.jpg" alt="addEventListener">
+  </li>
+  <li>
+    <p>观察者模式时序图</p>
+    <img src="/img/chrome/observer.jpg" alt="事件模型">
+  </li>
+</ol>
+
+
+<p></p><h4 style="margin-top:50px;">&lt;附&gt;</h4>
+参考：<p></p>
+<ol>
+  <li>源码解析：<a href="https://zhuanlan.zhihu.com/p/25095179" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25095179</a></li>
+</ol>
 
         </div>
         
@@ -182,16 +226,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/10/28/框架/Vue问题总结/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2021/01/15/框架/菜单路由连续点击无响应/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Vue问题总结</span>
+                <span class="level-item">「vue-router源码」页面问题：菜单路由连续点击无响应</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/28/JavaScript/JavaScript原型/">
-                <span class="level-item">JavaScript原型</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2021/01/13/JavaScript/手写一个简易版promise/">
+                <span class="level-item">手写一个简易版promise</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -534,6 +578,25 @@
         
         <article class="media">
             
+            <a href="/2021/01/15/浏览器/浏览器事件机制/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="「chromium源码解读」浏览器事件机制">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T18:33:56.000Z">2021-01-15</time></div>
+                    <a href="/2021/01/15/浏览器/浏览器事件机制/" class="has-link-black-ter is-size-6">「chromium源码解读」浏览器事件机制</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/浏览器/">浏览器</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2021/01/13/JavaScript/手写一个简易版promise/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="手写一个简易版promise">
@@ -589,25 +652,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/01/12/编译原理/JavaScript柯里化/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="JavaScript柯里化">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-12T12:04:18.000Z">2021-01-12</time></div>
-                    <a href="/2021/01/12/编译原理/JavaScript柯里化/" class="has-link-black-ter is-size-6">JavaScript柯里化</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/编译原理/">编译原理</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -626,7 +670,7 @@
                     <span class="level-item">January 2021</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -703,7 +747,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -944,6 +988,25 @@
         
         <article class="media">
             
+            <a href="/2021/01/15/浏览器/浏览器事件机制/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="「chromium源码解读」浏览器事件机制">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T18:33:56.000Z">2021-01-15</time></div>
+                    <a href="/2021/01/15/浏览器/浏览器事件机制/" class="has-link-black-ter is-size-6">「chromium源码解读」浏览器事件机制</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/浏览器/">浏览器</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2021/01/13/JavaScript/手写一个简易版promise/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="手写一个简易版promise">
@@ -999,25 +1062,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/01/12/编译原理/JavaScript柯里化/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="JavaScript柯里化">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-12T12:04:18.000Z">2021-01-12</time></div>
-                    <a href="/2021/01/12/编译原理/JavaScript柯里化/" class="has-link-black-ter is-size-6">JavaScript柯里化</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/编译原理/">编译原理</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1036,7 +1080,7 @@
                     <span class="level-item">January 2021</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">13</span>
+                    <span class="level-item tag">14</span>
                 </span>
             </a>
         </li>
@@ -1113,7 +1157,7 @@
                     <span class="level-item">October 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">6</span>
+                    <span class="level-item tag">5</span>
                 </span>
             </a>
         </li>
@@ -1327,7 +1371,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <!-- <img src="/" alt="浏览器事件机制" height="28"> -->
+                    <!-- <img src="/" alt="「chromium源码解读」浏览器事件机制" height="28"> -->
                 
                 </a>
                 <p class="is-size-7">
