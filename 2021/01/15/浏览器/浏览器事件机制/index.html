@@ -2,18 +2,30 @@
 <html lang="en">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Tag: 浏览器 - shjavascript&#39;s blog</title>
+<title>「chromium源码解读」浏览器事件机制 - shjavascript&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="shjavascript&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/tags/浏览器/index.html">
+    <meta name="description" content=".red{color:red;}   从chrome源码侧webkit内核解读浏览器事件机制。原创解析转载请注明出处。">
+<meta name="keywords" content="浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「chromium源码解读」浏览器事件机制">
+<meta property="og:url" content="http://yoursite.com/2021/01/15/浏览器/浏览器事件机制/index.html">
 <meta property="og:site_name" content="shjavascript&#39;s blog">
+<meta property="og:description" content=".red{color:red;}   从chrome源码侧webkit内核解读浏览器事件机制。原创解析转载请注明出处。">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/img/chrome/eventmodel.jpg">
+<meta property="og:image" content="http://yoursite.com/img/chrome/soucecode.jpg">
+<meta property="og:image" content="http://yoursite.com/img/chrome/procedure.jpg">
+<meta property="og:image" content="http://yoursite.com/img/chrome/eventflow.jpg">
+<meta property="og:image" content="http://yoursite.com/img/chrome/addEventListener.jpg">
+<meta property="og:image" content="http://yoursite.com/img/chrome/observer.jpg">
+<meta property="og:updated_time" content="2021-01-17T07:38:09.469Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shjavascript&#39;s blog">
+<meta name="twitter:title" content="「chromium源码解读」浏览器事件机制">
+<meta name="twitter:description" content=".red{color:red;}   从chrome源码侧webkit内核解读浏览器事件机制。原创解析转载请注明出处。">
+<meta name="twitter:image" content="http://yoursite.com/img/chrome/eventmodel.jpg">
 
 
 
@@ -85,7 +97,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <!-- <img src="/" alt="shjavascript&#39;s blog" height="28"> -->
+                <!-- <img src="/" alt="「chromium源码解读」浏览器事件机制" height="28"> -->
             
             </a>
         </div>
@@ -117,17 +129,6 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">Tags</a></li>
-            <li class="is-active"><a href="#" aria-current="page">浏览器</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
@@ -152,7 +153,7 @@
         
         <h1 class="title is-size-4 is-size-5-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2021/01/15/浏览器/浏览器事件机制/">「chromium源码解读」浏览器事件机制</a>
+                「chromium源码解读」浏览器事件机制
             
         </h1>
         <div class="content">
@@ -161,17 +162,58 @@
 </style>
 
 <p>从chrome源码侧webkit内核解读浏览器事件机制。<span class="red">原创解析转载请注明出处。</span></p>
+
+<a id="more"></a>
+<ol>
+  <li>
+    <p>事件模型(Event Moudle)</p>
+    <img src="/img/chrome/eventmodel.jpg" alt="事件模型">
+  </li>
+  <li>
+    <p>事件订阅-发布相关源码（c++）</p>
+    <img src="/img/chrome/soucecode.jpg" alt="订阅-发布源码">
+  </li>
+  <li>
+    <p>事件处理过程</p>
+    <img src="/img/chrome/procedure.jpg" alt="事件处理过程">
+  </li>
+  <li>
+    <p>DOM事件流</p>
+    <img src="/img/chrome/eventflow.jpg" alt="DOM事件流">
+  </li>
+  <li>
+    <p>设置事件处理程序在事件流中的位置</p>
+    <img src="/img/chrome/addEventListener.jpg" alt="addEventListener">
+  </li>
+  <li>
+    <p>观察者模式时序图</p>
+    <img src="/img/chrome/observer.jpg" alt="事件模型">
+  </li>
+</ol>
+
+
+<p></p><h4 style="margin-top:50px;">&lt;附&gt;</h4>
+参考：<p></p>
+<ol>
+  <li>源码解析：<a href="https://zhuanlan.zhihu.com/p/25095179" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25095179</a></li>
+</ol>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2021/01/15/浏览器/浏览器事件机制/#more">Read More</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/浏览器/">浏览器</a>
                 </div>
             </div>
         </div>
         
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
         
     </div>
 </div>
@@ -180,107 +222,26 @@
 
 
 
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-30T08:55:50.000Z">2019-09-30</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/浏览器/">浏览器</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a few seconds read (About 30 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-4 is-size-5-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/30/浏览器/浏览器缓存机制/">浏览器缓存机制</a>
-            
-        </h1>
-        <div class="content">
-            <p></p><h4 style="margin-top:50px;">&lt;附&gt;</h4><p></p>
-<ol>参考：
-  <li><a href="http://bbs.qcloud.com/thread-3775-1-1.html" target="_blank" rel="noopener">http://bbs.qcloud.com/thread-3775-1-1.html</a></li>
-  <li><a href="https://www.jb51.net/article/51951.htm" target="_blank" rel="noopener">https://www.jb51.net/article/51951.htm</a></li>
-  <li><a href="https://segmentfault.com/a/1190000016265991" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016265991</a></li>
-  <li><a href="https://juejin.im/entry/5ad86c16f265da505a77dca4" target="_blank" rel="noopener">https://juejin.im/entry/5ad86c16f265da505a77dca4</a></li>
-</ol>
-
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2021/01/15/框架/菜单路由连续点击无响应/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">「vue-router源码」页面问题：菜单路由连续点击无响应</span>
+            </a>
         </div>
         
         
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2021/01/13/JavaScript/手写一个简易版promise/">
+                <span class="level-item">手写一个简易版promise</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
         
     </div>
 </div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-30T03:37:05.000Z">2019-09-30</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/浏览器/">浏览器</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a few seconds read (About 19 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-4 is-size-5-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/09/30/浏览器/浏览器中的EventLoop/">浏览器中的EventLoop</a>
-            
-        </h1>
-        <div class="content">
-            <p></p><h4 style="margin-top:50px;">&lt;附&gt;</h4><p></p>
-<ol>参考：
-  <li><a href="http://www.ruanyifeng.com/blog/2014/10/event-loop.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2014/10/event-loop.html</a></li>
-  <li><a href="https://wangdoc.com/javascript/events/model.html" target="_blank" rel="noopener">https://wangdoc.com/javascript/events/model.html</a></li>
-</ol>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
 
 
 </div>
@@ -1410,7 +1371,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <!-- <img src="/" alt="shjavascript&#39;s blog" height="28"> -->
+                    <!-- <img src="/" alt="「chromium源码解读」浏览器事件机制" height="28"> -->
                 
                 </a>
                 <p class="is-size-7">
