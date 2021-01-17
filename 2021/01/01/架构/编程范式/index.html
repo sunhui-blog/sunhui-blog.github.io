@@ -7,18 +7,20 @@
 
 
 
-    <meta name="description" content=".pt{padding-top: 10px;} .pt5{padding-top: 5px;} .content p.mb5{margin-bottom: 5px;}">
+    <meta name="description" content=".pt{padding-top: 10px;} .pt5{padding-top: 5px;} .content p.mb5{margin-bottom: 5px;} .red{color: red;} .bd{border: 1px solid #000} .pd{padding: 5px}   基本思想：将程序分别抽象分解为过程、函数、断言、对象和进程，就依次成为过程式、函数式、逻辑式、对象">
 <meta name="keywords" content="架构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编程范式">
 <meta property="og:url" content="http://yoursite.com/2021/01/01/架构/编程范式/index.html">
 <meta property="og:site_name" content="shjavascript&#39;s blog">
-<meta property="og:description" content=".pt{padding-top: 10px;} .pt5{padding-top: 5px;} .content p.mb5{margin-bottom: 5px;}">
+<meta property="og:description" content=".pt{padding-top: 10px;} .pt5{padding-top: 5px;} .content p.mb5{margin-bottom: 5px;} .red{color: red;} .bd{border: 1px solid #000} .pd{padding: 5px}   基本思想：将程序分别抽象分解为过程、函数、断言、对象和进程，就依次成为过程式、函数式、逻辑式、对象">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-01-17T13:54:07.316Z">
+<meta property="og:image" content="http://yoursite.com/img/paradigm/aop.jpg">
+<meta property="og:updated_time" content="2021-01-17T17:42:09.551Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编程范式">
-<meta name="twitter:description" content=".pt{padding-top: 10px;} .pt5{padding-top: 5px;} .content p.mb5{margin-bottom: 5px;}">
+<meta name="twitter:description" content=".pt{padding-top: 10px;} .pt5{padding-top: 5px;} .content p.mb5{margin-bottom: 5px;} .red{color: red;} .bd{border: 1px solid #000} .pd{padding: 5px}   基本思想：将程序分别抽象分解为过程、函数、断言、对象和进程，就依次成为过程式、函数式、逻辑式、对象">
+<meta name="twitter:image" content="http://yoursite.com/img/paradigm/aop.jpg">
 
 
 
@@ -143,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 146 words)
+                    5 minutes read (About 794 words)
                 </span>
                 
                 
@@ -156,21 +158,29 @@
             
         </h1>
         <div class="content">
-            <p><style type="text/css">
+            <style type="text/css">
 .pt{padding-top: 10px;}
 .pt5{padding-top: 5px;}
 .content p.mb5{margin-bottom: 5px;}
+.red{color: red;}
+.bd{border: 1px solid #000}
+.pd{padding: 5px}
 </style>
-<a id="more"></a></p>
+
+<p>基本思想：将程序分别抽象分解为过程、函数、断言、对象和进程，就依次成为过程式、函数式、逻辑式、对象式和并发式。泛型式核心是抽象出算法后与数据分解。</p>
+
+<a id="more"></a>
 <ol>
   <li class="pt">
     命令范式:
-    <p class="pt5 mb5">
-      其世界观是：程序由若干行动指令组成的有序列表。
-    </p>
-    <p class="pt5 mb5">
-      其方法论是：用变量来存储数据，用语句来执行指令。
-    </p>
+    <div class="pt">
+      <p class="mb5">
+        其世界观是：程序由若干行动指令组成的有序列表。
+      </p>
+      <p>
+        其方法论是：用变量来存储数据，用语句来执行指令。
+      </p>
+    </div>
   </li>
   <li class="pt">
     声明范式:
@@ -199,9 +209,41 @@
     </p>
   </li>
   <li class="pt">
-    切面范式:
-    <p class="pt5">
-    </p>
+    AOP切面范式<span class="red">（多角度看问题）</span>:
+    <div class="pt">
+      <p class="mb5">
+        AOP将程序抽象分解为切面。
+      </p>
+      <p class="mb5">
+        抽象与分解的原则：<span class="red">单一化、正交化</span>。每个模块职责明确专一，模块之间相互独立，即高內聚，低耦合（high cohesion &amp; low coupling）。
+      </p>
+      <p class="mb5"><span class="red">正交化</span>：在数学中，互为正交的两个向量在彼此方向上投影为零，意味着彼此独立、互不影响。</p>
+      <div class="bd pd">
+        <p>举个例子：在调用某些对象的方法、读写某些对象的域、抛出某些异常等前后需要用到统一的业务逻辑，诸如日志输出、代码跟踪、性能监控、异常处理、安全检查、事务管理，等等。</p>
+        <p>解决思路：将每类横切关注点封装到单独的Aspect模块中，将程序中的一些执行点与相应的代码绑定起来。</p>
+        <p>例如：调用某个对象的方法前后：符合预先指定条件的接入点集合称为切入点；所有以set为命名开头的方法：每段绑定的代码称为一个建议(advice)。
+        </p>
+      </div>
+      <img src="/img/paradigm/aop.jpg" alt="切面式编程">
+      <ul>
+        <li>横向关注点指与程序的<span class="red">纵向主流</span>执行方向<span class="red">横向正交</span>的关注焦点。</li>
+        <li>接入点是<span class="red">附加行为</span>—-建议(advice)的执行点，切入点(pointcut)是指定的接入点(join point)集合，这些接入点共享一段插入代码。切入点与建议组成了切面(aspect)，是模块化的横切关注点</li>
+        <li>编织是将附加的切面逻辑嵌入到主体应用程序之中的过程。编织分<span class="red">静态编织</span>和<span class="red">动态编织</span>两种。静态编织在编译期、后编译期或加载期嵌入代码，动态编织则在运行期嵌入。</li>
+        <li>AOP的实施分3步：切面分解、切面实现和切面合成。</li>
+        <li>OOP只能<span class="red">沿继承树的纵向方向</span>重用，AOP可以沿<span class="red">横向方向</span>重用。</li>
+      </ul>
+    </div>
+    <!-- 关键点：
+    <ol class="pt5">
+      <li>SoC(Separation of Concerns):</li>
+      <li>DRY(Don't repeat yourself)</li>
+      <li>AOP</li>
+      <li>Aspect</li>
+      <li>join point</li>
+      <li>pointcut</li>
+      <li>advice</li>
+      <li>OOP</li>
+    </ol> -->
   </li>
   <li class="pt">
     事件驱动:
@@ -227,6 +269,20 @@
     情景范式:
     <p class="pt5">
     </p>
+  </li>
+</ol>
+
+<p></p><h4 style="margin-top:50px;">&lt;附&gt;</h4><p></p>
+<ol>参考：
+  <li>
+    <a href="https://mendylee.gitbooks.io/geeker-study-courses/content/ruan-jian-she-ji-pian/ruan-jian-she-ji.html" target="_blank">
+      软件设计
+    <a>
+  </a></a></li>
+  <li>
+    <a href="https://blog.zhenghui.org/tag/colonclass/" target="_blank">
+      冒号课堂
+    </a>
   </li>
 </ol>
         </div>
@@ -265,8 +321,8 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2021/01/01/脚手架/前端脚手架/">
-                <span class="level-item">前端脚手架</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2021/01/01/架构/模块化/">
+                <span class="level-item">模块化</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -318,7 +374,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        48
+                        49
                     </p>
                 </div>
             </div>
@@ -463,7 +519,7 @@
                 <span class="level-item">6.架构</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">5</span>
+                <span class="level-item tag">6</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/框架/">
@@ -573,7 +629,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/前后端分离/" style="font-size: 10px;">前后端分离</a> <a href="/tags/工具/" style="font-size: 14px;">工具</a> <a href="/tags/异常-性能/" style="font-size: 14px;">异常&性能</a> <a href="/tags/架构/" style="font-size: 18px;">架构</a> <a href="/tags/框架/" style="font-size: 16px;">框架</a> <a href="/tags/浏览器/" style="font-size: 14px;">浏览器</a> <a href="/tags/程序设计/" style="font-size: 10px;">程序设计</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/编程语言/" style="font-size: 20px;">编程语言</a> <a href="/tags/编译原理/" style="font-size: 10px;">编译原理</a> <a href="/tags/网络知识/" style="font-size: 14px;">网络知识</a> <a href="/tags/脚手架/" style="font-size: 10px;">脚手架</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
+        <a href="/tags/前后端分离/" style="font-size: 10px;">前后端分离</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/异常-性能/" style="font-size: 15px;">异常&性能</a> <a href="/tags/架构/" style="font-size: 20px;">架构</a> <a href="/tags/框架/" style="font-size: 17.5px;">框架</a> <a href="/tags/浏览器/" style="font-size: 15px;">浏览器</a> <a href="/tags/程序设计/" style="font-size: 10px;">程序设计</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/编程语言/" style="font-size: 20px;">编程语言</a> <a href="/tags/编译原理/" style="font-size: 10px;">编译原理</a> <a href="/tags/网络知识/" style="font-size: 15px;">网络知识</a> <a href="/tags/脚手架/" style="font-size: 10px;">脚手架</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a>
     </div>
 </div>
 
@@ -701,7 +757,7 @@
                     <span class="level-item">January 2021</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -908,7 +964,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/架构/">
                         <span class="tag">架构</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
@@ -1111,7 +1167,7 @@
                     <span class="level-item">January 2021</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">15</span>
+                    <span class="level-item tag">16</span>
                 </span>
             </a>
         </li>
@@ -1318,7 +1374,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/架构/">
                         <span class="tag">架构</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
