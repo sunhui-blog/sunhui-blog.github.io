@@ -7,15 +7,20 @@
 
 
 
-    <meta name="keywords" content="编程语言">
+    <meta name="description" content="我们可以将每次执行栈执行的代码当做是一个宏任务(包括每次从事件队列中获取一个事件回调并放到执行栈中执行)， 每一个宏任务会从头到尾执行完毕，不会执行其他 我们已经知道宏任务结束后，会执行渲染，然后执行下一个宏任务， 而微任务可以理解成在当前宏任务执行后立即执行的任务">
+<meta name="keywords" content="编程语言">
 <meta property="og:type" content="article">
 <meta property="og:title" content="宏任务和微任务">
 <meta property="og:url" content="http://yoursite.com/2021/01/07/JavaScript/宏任务和微任务/index.html">
 <meta property="og:site_name" content="shjavascript&#39;s blog">
+<meta property="og:description" content="我们可以将每次执行栈执行的代码当做是一个宏任务(包括每次从事件队列中获取一个事件回调并放到执行栈中执行)， 每一个宏任务会从头到尾执行完毕，不会执行其他 我们已经知道宏任务结束后，会执行渲染，然后执行下一个宏任务， 而微任务可以理解成在当前宏任务执行后立即执行的任务">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-01-18T07:54:05.005Z">
+<meta property="og:image" content="http://yoursite.com/img/eventloop.jpg">
+<meta property="og:updated_time" content="2021-01-18T17:14:06.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="宏任务和微任务">
+<meta name="twitter:description" content="我们可以将每次执行栈执行的代码当做是一个宏任务(包括每次从事件队列中获取一个事件回调并放到执行栈中执行)， 每一个宏任务会从头到尾执行完毕，不会执行其他 我们已经知道宏任务结束后，会执行渲染，然后执行下一个宏任务， 而微任务可以理解成在当前宏任务执行后立即执行的任务">
+<meta name="twitter:image" content="http://yoursite.com/img/eventloop.jpg">
 
 
 
@@ -134,7 +139,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 0 words)
+                    2 minutes read (About 259 words)
                 </span>
                 
                 
@@ -147,7 +152,41 @@
             
         </h1>
         <div class="content">
-            
+            <p>我们可以将每次执行栈执行的代码当做是一个宏任务(包括每次从事件队列中获取一个事件回调并放到执行栈中执行)， 每一个宏任务会从头到尾执行完毕，不会执行其他</p>
+<p>我们已经知道宏任务结束后，会执行渲染，然后执行下一个宏任务， 而微任务可以理解成在当前宏任务执行后立即执行的任务</p>
+
+<a id="more"></a>
+<p><img src="/img/eventloop.jpg" alt="事件循环"></p>
+<p></p><h5>常见的宏任务</h5><p></p>
+<ul>
+  <li>主代码块</li>
+  <li>setTimeout</li>
+  <li>setInterval</li>
+  <li>setImmediate ()-Node</li>
+  <li>requestAnimationFrame ()-浏览器</li>
+</ul>
+
+<p></p><h5>常见微任务</h5><p></p>
+<ul>
+  <li>Promise.then()</li>
+  <li>process.nextTick ()-Node</li>
+  <li>catch</li>
+  <li>finally</li>
+  <li>Object.observe</li>
+  <li>MutationObserver</li>
+</ul>
+
+<p></p><h5>宏任务和微任务注意点：</h5><p></p>
+<ol>
+  <li>浏览器会先执行一个宏任务，紧接着执行当前执行栈产生的微任务，再进行渲染，然后再执行下一个宏任务</li>
+  <li>微任务和宏任务不在一个任务队列，不在一个任务队列</li>
+</ol>
+
+<p></p><h4 style="margin-top:50px;">&lt;附&gt;</h4>
+参考：<p></p>
+<ol>
+  <li><a href="https://juejin.cn/post/6844904050543034376" target="_blank" rel="noopener">https://juejin.cn/post/6844904050543034376</a></li>
+</ol>
         </div>
         
         <div class="level is-size-7 is-uppercase">
