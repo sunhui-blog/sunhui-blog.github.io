@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="shjavascript&#39;s blog">
 <meta property="og:description" content="promise解决的问题：javascript是单线程，避免阻塞。   .red {color: red;} .blue {color: blue;}">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-01-23T14:29:53.101Z">
+<meta property="og:updated_time" content="2021-01-23T14:40:02.564Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手写一个简易版promise">
 <meta name="twitter:description" content="promise解决的问题：javascript是单线程，避免阻塞。   .red {color: red;} .blue {color: blue;}">
@@ -137,7 +137,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 648 words)
+                    5 minutes read (About 690 words)
                 </span>
                 
                 
@@ -205,8 +205,18 @@
 
   </li>
   <li>
-    <p>Promise.any：只要其中的一个 promise 成功，就返回那个已经成功的 promise。</p>
+    <p>只要其中的一个 promise 成功，就返回那个已经成功的 promise：只要其中的一个 promise 成功，就返回那个已经成功的 promise。</p>
     <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Promise.any([promise1, promise2, promise3]).then((value) =&gt; &#123;</span><br><span class="line">  console.log(value);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+  </li>
+  <li>
+    <p>Promise.resolve：</p>
+    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Promise.resolve(5).then((values) =&gt; &#123;console.log(values)&#125;) // &quot;5&quot;</span><br></pre></td></tr></table></figure>
+
+  </li>
+  <li>
+    <p>Promise.reject：</p>
+    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Promise.reject(&apos;error&apos;).then(()=&gt;&#123;&#125;, (error)=&gt; &#123;console.log(error)&#125;) // &quot;reject&quot;</span><br></pre></td></tr></table></figure>
 
   </li>
 </ol>
