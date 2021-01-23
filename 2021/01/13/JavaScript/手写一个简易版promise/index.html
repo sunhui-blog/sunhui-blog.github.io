@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="promise的简易实现">
+    <meta name="description" content="promise解决的问题：javascript是单线程，避免阻塞。   .red {color: red;} .blue {color: blue;}">
 <meta name="keywords" content="编程语言">
 <meta property="og:type" content="article">
 <meta property="og:title" content="手写一个简易版promise">
 <meta property="og:url" content="http://yoursite.com/2021/01/13/JavaScript/手写一个简易版promise/index.html">
 <meta property="og:site_name" content="shjavascript&#39;s blog">
-<meta property="og:description" content="promise的简易实现">
+<meta property="og:description" content="promise解决的问题：javascript是单线程，避免阻塞。   .red {color: red;} .blue {color: blue;}">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-01-17T14:07:00.683Z">
+<meta property="og:updated_time" content="2021-01-23T14:29:53.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手写一个简易版promise">
-<meta name="twitter:description" content="promise的简易实现">
+<meta name="twitter:description" content="promise解决的问题：javascript是单线程，避免阻塞。   .red {color: red;} .blue {color: blue;}">
 
 
 
@@ -137,7 +137,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 339 words)
+                    4 minutes read (About 648 words)
                 </span>
                 
                 
@@ -150,7 +150,12 @@
             
         </h1>
         <div class="content">
-            <p>promise的简易实现
+            <p>promise解决的问题：javascript是单线程，避免阻塞。</p>
+
+<p><style type="text/css">
+.red {color: red;}
+.blue {color: blue;}
+</style>
 <a id="more"></a></p>
 <p></p><h5>解决的问题有：</h5><p></p>
 <ol>
@@ -169,15 +174,52 @@
 <ol>
   <li>
     <p>Promise.all：按队列依次返回结果</p>
-    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Promise.all([p1, p2]).then((result) =&gt; &#123;</span><br><span class="line">  console.log(result) // [&apos;1&apos;, &apos;2&apos;]</span><br><span class="line">&#125;).catch((error) =&gt; &#123;</span><br><span class="line">  console.log(error)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const promise1 = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">  setTimeout(resolve, 1000, &apos;promise1&apos;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const promise2 = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">  setTimeout(resolve, 2000, &apos;promise2&apos;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const promise3 = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">  setTimeout(resolve, 3000, &apos;promise3&apos;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Promise.all([promise1, promise2, promise3]).then((result) =&gt; &#123;</span><br><span class="line">  console.log(result) // [&quot;promise1&quot;, &quot;promise2&quot;, &quot;promise3&quot;]</span><br><span class="line">&#125;).catch((error) =&gt; &#123;</span><br><span class="line">  console.log(error)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+    <p>手写一个Promise.all</p>
+    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function all (promises) &#123;</span><br><span class="line">  return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    var result = []</span><br><span class="line">    promises.forEach((promise) =&gt; &#123;</span><br><span class="line">      promise.then((values) =&gt; &#123;</span><br><span class="line">        result.push(values)</span><br><span class="line">        result.length === promises.length &amp;&amp; resolve(result)</span><br><span class="line">      &#125;, (error) =&gt; &#123;</span><br><span class="line">        reject(error)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    <p>测试一下：</p>
+    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">all([promise1, promise2, promise3]).then((result) =&gt; &#123;</span><br><span class="line">  console.log(result) // [&quot;promise1&quot;, &quot;promise2&quot;, &quot;promise3&quot;]</span><br><span class="line">&#125;).catch((error) =&gt; &#123;</span><br><span class="line">  console.log(error)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
   </li>
   <li>
-    <p>Promise.race：采用第一个promise的值作为它的值，从而异步地解析或拒绝（一旦堆栈为空）。</p>
-    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Promise.race([p1, p2, p3]).then((result) =&gt; &#123;</span><br><span class="line">  console.log(result)</span><br><span class="line">&#125;).catch((error) =&gt; &#123;</span><br><span class="line">  console.log(error)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+    <p>Promise.race：采用<span class="red">第一个promise的值</span>作为它的值。无论堆栈中后面的promise是resolve还是reject都会取第一个返回的结果</p>
+    <ol>
+      <li>返回结果与<span class="red">Promise的结果(resolve和reject)</span>无关，仅与返回的顺序。</li>
+      <li>promise中存在<span class="red">setTimeout</span>，会影响返回结果。</li>
+    </ol>
+    <div>
+      <p>手写一个Promise.race</p>
+      <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function race (promises) &#123;</span><br><span class="line">  var hasValue = false</span><br><span class="line">  var hasError = false</span><br><span class="line">  return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    promises.forEach(promise =&gt; &#123;</span><br><span class="line">      promise.then((value) =&gt; &#123;</span><br><span class="line">        !hasValue &amp;&amp; !hasError &amp;&amp; resolve(value)</span><br><span class="line">        hasValue = true</span><br><span class="line">      &#125;, (error) =&gt; &#123;</span><br><span class="line">        !hasValue &amp;&amp; !hasError &amp;&amp; reject(error)</span><br><span class="line">        hasError = true</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      <p>测试一下：</p>
+
+      <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">race([promise1, promise2, promise3]).then(values =&gt; &#123;</span><br><span class="line">  console.log(values) // &quot;promise1&quot;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+    </div>
+  </li>
+  <li>
+    <p>Promise.allSettled：返回一个在所有给定的promise都已经fulfilled或rejected后的promise，并带有一个对象数组，每个对象表示对应的promise结果。</p>
+    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Promise.allSettled([promise1, promise2, promise3]).then((result) =&gt; &#123;</span><br><span class="line">  result.forEach(item =&gt; console.log(item))</span><br><span class="line">  // &#123;status: &quot;fulfilled&quot;, value: &quot;promise1&quot;&#125;</span><br><span class="line">  // &#123;status: &quot;fulfilled&quot;, value: &quot;promise2&quot;&#125;</span><br><span class="line">  // &#123;status: &quot;fulfilled&quot;, value: &quot;promise3&quot;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+  </li>
+  <li>
+    <p>Promise.any：只要其中的一个 promise 成功，就返回那个已经成功的 promise。</p>
+    <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Promise.any([promise1, promise2, promise3]).then((value) =&gt; &#123;</span><br><span class="line">  console.log(value);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
   </li>
 </ol>
+
+
+
+<p></p><h4 style="margin-top:50px;">&lt;附&gt;</h4><p></p>
+<ol>
+  <li><a href="https://promisesaplus.com/" target="_blank" rel="noopener">https://promisesaplus.com/</a></li>
+  <li><a href="https://github.com/promises-aplus" target="_blank" rel="noopener">https://github.com/promises-aplus</a></li>
+  <li><a href="https://www.promisejs.org/patterns/" target="_blank" rel="noopener">https://www.promisejs.org/patterns/</a></li>
+</ol>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -267,7 +309,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        60
+                        62
                     </p>
                 </div>
             </div>
@@ -524,7 +566,7 @@
                 <span class="level-item">总结</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li>
             </ul>
@@ -552,6 +594,44 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2021/01/23/手动实现一个compose/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="手动实现一个compose">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-22T19:21:52.000Z">2021-01-23</time></div>
+                    <a href="/2021/01/23/手动实现一个compose/" class="has-link-black-ter is-size-6">手动实现一个compose</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2021/01/20/总结/SEO原理/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="SEO原理">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-20T06:35:11.000Z">2021-01-20</time></div>
+                    <a href="/2021/01/20/总结/SEO原理/" class="has-link-black-ter is-size-6">SEO原理</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/总结/">总结</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -610,44 +690,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/01/15/浏览器/浏览器事件机制/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="「chromium源码解读」浏览器事件机制">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T18:33:56.000Z">2021-01-15</time></div>
-                    <a href="/2021/01/15/浏览器/浏览器事件机制/" class="has-link-black-ter is-size-6">「chromium源码解读」浏览器事件机制</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/浏览器/">浏览器</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2021/01/14/架构/编程范式/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/performance.jpg" alt="编程范式">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T09:34:19.000Z">2021-01-14</time></div>
-                    <a href="/2021/01/14/架构/编程范式/" class="has-link-black-ter is-size-6">编程范式</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/架构/">架构</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -666,7 +708,7 @@
                     <span class="level-item">January 2021</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">20</span>
+                    <span class="level-item tag">22</span>
                 </span>
             </a>
         </li>
@@ -979,6 +1021,44 @@
         
         <article class="media">
             
+            <a href="/2021/01/23/手动实现一个compose/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="手动实现一个compose">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-22T19:21:52.000Z">2021-01-23</time></div>
+                    <a href="/2021/01/23/手动实现一个compose/" class="has-link-black-ter is-size-6">手动实现一个compose</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2021/01/20/总结/SEO原理/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="SEO原理">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-20T06:35:11.000Z">2021-01-20</time></div>
+                    <a href="/2021/01/20/总结/SEO原理/" class="has-link-black-ter is-size-6">SEO原理</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/总结/">总结</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2021/01/19/工具/手动实现一个koa-logger中间件/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="手动实现一个koa-logger中间件">
@@ -1034,44 +1114,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2021/01/15/浏览器/浏览器事件机制/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="「chromium源码解读」浏览器事件机制">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T18:33:56.000Z">2021-01-15</time></div>
-                    <a href="/2021/01/15/浏览器/浏览器事件机制/" class="has-link-black-ter is-size-6">「chromium源码解读」浏览器事件机制</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/浏览器/">浏览器</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2021/01/14/架构/编程范式/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/img/performance.jpg" alt="编程范式">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2021-01-14T09:34:19.000Z">2021-01-14</time></div>
-                    <a href="/2021/01/14/架构/编程范式/" class="has-link-black-ter is-size-6">编程范式</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/架构/">架构</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1090,7 +1132,7 @@
                     <span class="level-item">January 2021</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">20</span>
+                    <span class="level-item tag">22</span>
                 </span>
             </a>
         </li>
