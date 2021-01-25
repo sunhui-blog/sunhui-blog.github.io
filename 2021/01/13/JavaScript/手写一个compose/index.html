@@ -2,18 +2,23 @@
 <html lang="en">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Category: 编译原理 - shjavascript&#39;s blog</title>
+<title>手写一个compose - shjavascript&#39;s blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="shjavascript&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/categories/编译原理/index.html">
+    <meta name="description" content="从右到左循环调用">
+<meta name="keywords" content="编程语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手写一个compose">
+<meta property="og:url" content="http://yoursite.com/2021/01/13/JavaScript/手写一个compose/index.html">
 <meta property="og:site_name" content="shjavascript&#39;s blog">
+<meta property="og:description" content="从右到左循环调用">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-01-25T06:08:24.768Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shjavascript&#39;s blog">
+<meta name="twitter:title" content="手写一个compose">
+<meta name="twitter:description" content="从右到左循环调用">
 
 
 
@@ -85,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <!-- <img src="/" alt="shjavascript&#39;s blog" height="28"> -->
+                <!-- <img src="/" alt="手写一个compose" height="28"> -->
             
             </a>
         </div>
@@ -117,34 +122,22 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">Categories</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">编译原理</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2021-01-12T12:04:18.000Z">2021-01-12</time>
+                <time class="level-item has-text-grey" datetime="2021-01-13T15:58:42.000Z">2021-01-13</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/编译原理/">编译原理</a>
+                <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 109 words)
+                    a few seconds read (About 50 words)
                 </span>
                 
                 
@@ -153,22 +146,33 @@
         
         <h1 class="title is-size-4 is-size-5-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2021/01/12/编译原理/JavaScript柯里化/">JavaScript柯里化</a>
+                手写一个compose
             
         </h1>
         <div class="content">
-            <p>Currying：把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数。</p>
+            <p>从右到左循环调用</p>
+
+<a id="more"></a>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function compose (...args) &#123;</span><br><span class="line">  return function (x) &#123;</span><br><span class="line">    return args.reduceRight((prev, cur) =&gt; &#123;</span><br><span class="line">      return cur(prev)</span><br><span class="line">    &#125;, x)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试一下：
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function toUpperCase (str) &#123;</span><br><span class="line">  return str.toUpperCase()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function add (str) &#123;</span><br><span class="line">  return str += &apos;!&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const fn = compose(add, toUpperCase)</span><br><span class="line">console.log(fn(&apos;hello&apos;)) // &apos;HELLO!&apos;</span><br></pre></td></tr></table></figure></p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2021/01/12/编译原理/JavaScript柯里化/#more">Read More</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/编程语言/">编程语言</a>
                 </div>
             </div>
         </div>
         
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
         
     </div>
 </div>
@@ -177,7 +181,26 @@
 
 
 
-
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2021/01/13/JavaScript/手写一个简易版promise/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">手写一个简易版promise</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2021/01/13/JavaScript/手写一个reduce/">
+                <span class="level-item">手写一个reduce</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
@@ -1351,7 +1374,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <!-- <img src="/" alt="shjavascript&#39;s blog" height="28"> -->
+                    <!-- <img src="/" alt="手写一个compose" height="28"> -->
                 
                 </a>
                 <p class="is-size-7">
